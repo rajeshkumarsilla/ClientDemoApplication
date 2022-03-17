@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <script>
+        function callRESTAPI()
+        {
+          alert("Going to make REST CALL from here")
+          var xmlhttp=new XMLHttpRequest();
+          var url="http://localhost:8081/customers";
+          xmlhttp.open("GET",url,true);
+          xmlhttp.send();
+ 
+          xmlhttp.onreadystatechange=function()
+          {
+              // status should be 200 and readystate should be 4
+              if (xmlhttp.readyState==4 && xmlhttp.status==200)
+              {
+                  var xx=xmlhttp.responseText; // JSON objects
+                  
+                  document.getElementById("test").innerHTML=xx;
+              }
+          }
+        }
+ 
+    </script>
+ 
+</head>
+<body>
+    <h1> AJAX CALL</h1>
+ 
+    <P> Click the button below </P>
+ 
+    <button onclick="callRESTAPI()"> Call REST API</button>
+ 
+    <div id='test'>
+ 
+ 
+    </div>
+</body>
+</html>
